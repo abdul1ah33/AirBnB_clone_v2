@@ -5,8 +5,7 @@ Contains the class DBStorage
 
 import warnings
 # Suppress specific MySQL warning
-warnings.filterwarnings('ignore', category=DeprecationWarning, module='MySQLdb')
-
+warnings.simplefilter('ignore', category=DeprecationWarning)
 
 from os import getenv
 import sqlalchemy
