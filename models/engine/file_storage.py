@@ -12,6 +12,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """
     serializes instances to JSON file
@@ -44,10 +45,9 @@ class FileStorage:
                         cls_dict[k] = v
         else:
             cls_dict = self.__objects
-        
+
         return cls_dict
 
-    
     def new(self, obj):
         """
         Setting in __objects
@@ -66,7 +66,6 @@ class FileStorage:
                 dict_storage[x] = y.to_dict()
             json.dump(dict_storage, f)
 
-
     def reload(self):
         """
         Deserializes the JSON
@@ -79,13 +78,13 @@ class FileStorage:
                     self.new(eval(obj["__class__"])(**obj))
         except FileNotFoundError:
             return
-        
+
     def delete(self, obj=None):
         """
         Delete obj from __objects if it’s inside - if obj is equal to None,
         the method should not do anything
         """
-        if obj == None:
+        if obj is None:
             return
         del_obj = "{}.{}".format(obj.__class__.__name__, obj.id)
 
