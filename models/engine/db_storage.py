@@ -15,6 +15,10 @@ from models.place import Place
 from models.review import Review
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+import warnings
+
+# Suppress specific MySQL warning
+warnings.filterwarnings('ignore', category=DeprecationWarning, module='MySQLdb')
 
 
 class DBStorage:
